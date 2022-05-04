@@ -18,12 +18,12 @@ class MakeObatTable extends Migration
      */
     public function up()
     {
-        Schema::create('obat160419144', function (Blueprint $table) {
+        Schema::create('obat', function (Blueprint $table) {
             $table->id();
             $table->string('nama_obat');
             $table->integer('stok');
             $table->integer('harga');
-            $table->unsignedBigInteger('kategoriobat160419144_id');
+            $table->unsignedBigInteger('kategoriobat_id');
         });
     }
 
@@ -34,6 +34,6 @@ class MakeObatTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('obat160419144');
+        Schema::dropIfExists('obat');
     }
 }

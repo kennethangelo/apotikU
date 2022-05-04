@@ -13,7 +13,7 @@ class MakeKategoriobatTable extends Migration
      */
     public function up()
     {
-        Schema::create('kategoriobat160419144', function (Blueprint $table) {
+        Schema::create('kategoriobat', function (Blueprint $table) {
             $table->id();
             $table->string('nama');
         });
@@ -26,6 +26,6 @@ class MakeKategoriobatTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('kategoriobat160419144');
+        Schema::dropIfExists('kategoriobat');
     }
 }

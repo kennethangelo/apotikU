@@ -23,3 +23,4 @@ Route::get('/obatbatuk160419144', 'MedicineController@listObatBatuk')->name("lis
 Route::get('/daftarkategori160419144', 'CategoryController@daftarKategori')->name("daftarKategori160419144");
 Route::get('/stokobatbanyak160419144', 'MedicineController@stokObatTerbanyak')->name("stokObatTerbanyak160419144");
 Route::resource('/transaksi', 'TransactionController');
+Route::resource('suppliers', 'SupplierController');

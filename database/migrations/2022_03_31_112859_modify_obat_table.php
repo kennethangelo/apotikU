@@ -13,8 +13,8 @@ class ModifyObatTable extends Migration
      */
     public function up()
     {
-        Schema::table('obat160419144', function (Blueprint $table) {
-            $table->foreign('kategoriobat160419144_id')->references('id')->on('kategoriobat160419144');
+        Schema::table('obat', function (Blueprint $table) {
+            $table->foreign('kategoriobat_id')->references('id')->on('kategoriobat160419144');
         });
     }
 
@@ -25,8 +25,8 @@ class ModifyObatTable extends Migration
      */
     public function down()
     {
-        Schema::table('obat160419144', function (Blueprint $table) {
-            $table->dropForeign(['kategoriobat160419144_id']);
+        Schema::table('obat', function (Blueprint $table) {
+            $table->dropForeign(['kategoriobat4_id']);
         });
     }
 }

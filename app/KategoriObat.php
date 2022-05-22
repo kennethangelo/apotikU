@@ -6,9 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class KategoriObat extends Model
 {
-    protected $table = 'kategoriobat160419144';
+    protected $table = 'kategoriobat';
     
     public function obats(){
-        return $this->hasMany('App\Obat','kategoriobat160419144_id');
+        return $this->hasMany('App\Obat','kategoriobat_id');
     }
 }

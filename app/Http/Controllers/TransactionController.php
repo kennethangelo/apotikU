@@ -17,7 +17,7 @@ class TransactionController extends Controller
     {
         $result = Transaction::all();
         // dd($result);
-        return view('transaksi', ['data' => $result]);
+        return view('transaksi.index', ['data' => $result]);
     }
 
     /**

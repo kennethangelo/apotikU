@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class MakeKategoriobatTable extends Migration
+class AddTransactionTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,12 @@ class MakeKategoriobatTable extends Migration
      */
     public function up()
     {
-        Schema::create('kategoriobat', function (Blueprint $table) {
+        Schema::create('transactions', function (Blueprint $table) {
             $table->id();
-            $table->string('nama');
+            $table->unsignedBigInteger('buyers_id');
+            $table->unsignedBigInteger('users_id');
+            $table->dateTime('transaction_date');
+            $table->timestamps();
         });
     }
 
@@ -26,6 +29,6 @@ class MakeKategoriobatTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('kategoriobat');
+        Schema::dropIfExists('transactions');
     }
 }

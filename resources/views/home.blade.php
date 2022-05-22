@@ -7,7 +7,7 @@
             <div class="row mb-2">
                 <div class="col-md-12">
                     <h1 class="m-0">Welcome to ApotikU Admin Page!</h1>
-                </div><!-- /.col -->
+                </div><!-- /.scol -->
             </div><!-- /.row -->
         </div><!-- /.container-fluid -->
     </div>

@@ -8,30 +8,31 @@
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome -->
-  <link rel="stylesheet" href="{{ asset("plugins/fontawesome-free/css/all.min.css") }}">
+  <link rel="stylesheet" href="{{ asset('plugins/fontawesome-free/css/all.min.css') }}">
   <!-- Ionicons -->
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   <!-- Tempusdominus Bootstrap 4 -->
-  <link rel="stylesheet" href="{{ asset("plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css")}}">
+  <link rel="stylesheet" href="{{ asset('plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css')}}">
   <!-- iCheck -->
-  <link rel="stylesheet" href="{{ asset("plugins/icheck-bootstrap/icheck-bootstrap.min.css")}}">
+  <link rel="stylesheet" href="{{ asset('plugins/icheck-bootstrap/icheck-bootstrap.min.css')}}">
   <!-- JQVMap -->
-  <link rel="stylesheet" href="{{ asset("plugins/jqvmap/jqvmap.min.css")}}">
+  <link rel="stylesheet" href="{{ asset('plugins/jqvmap/jqvmap.min.css')}}">
   <!-- Theme style -->
-  <link rel="stylesheet" href="{{ asset("css/adminlte.min.css")}}">
+  <link rel="stylesheet" href="{{ asset('css/adminlte.min.css')}}">
   <!-- overlayScrollbars -->
-  <link rel="stylesheet" href="{{ asset("plugins/overlayScrollbars/css/OverlayScrollbars.min.css")}}">
+  <link rel="stylesheet" href="{{ asset('plugins/overlayScrollbars/css/OverlayScrollbars.min.css')}}">
   <!-- Daterange picker -->
-  <link rel="stylesheet" href="{{ asset("plugins/daterangepicker/daterangepicker.css")}}">
+  <link rel="stylesheet" href="{{ asset('plugins/daterangepicker/daterangepicker.css')}}">
   <!-- summernote -->
-  <link rel="stylesheet" href="{{ asset("plugins/summernote/summernote-bs4.min.css")}}">
+  <link rel="stylesheet" href="{{ asset('plugins/summernote/summernote-bs4.min.css')}}">
+  <link rel="shortcut icon" href="{{asset('img/logoapotiku.png')}}" type="image/x-icon">
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
 
   <!-- Preloader -->
   <div class="preloader flex-column justify-content-center align-items-center">
-    <img class="animation__shake" src="{{asset("img/logoapotiku.png")}}" alt="ApotikU Logo" height="60" width="60">
+    <img class="animation__shake" src="{{asset('img/logoapotiku.png')}}" alt="ApotikU Logo" height="60" width="60">
   </div>
 
   <!-- Navbar -->
@@ -55,7 +56,7 @@
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="/" class="brand-link">
-      <img src="{{asset("img/logoapotiku.png")}}" alt="ApotikU Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+      <img src="{{asset('img/logoapotiku.png')}}" alt="ApotikU Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
       <span class="brand-text font-weight-light">ApotikU Admin</span>
     </a>
 
@@ -68,7 +69,7 @@
                with font-awesome or any other icon font library -->
           <li class="nav-header">KATEGORI OBAT</li>
           <li class="nav-item">
-            <a href="{{route("daftarKategori160419144")}}" class="nav-link">
+            <a href="{{route('kategori.index')}}" class="nav-link">
               <i class="nav-icon far fa-calendar-alt"></i>
               <p>
                 List Daftar Kategori
@@ -78,7 +79,7 @@
 
           <li class="nav-header">OBAT</li>
           <li class="nav-item">
-            <a href="{{route("listObat160419144")}}" class="nav-link">
+            <a href="{{route('obat.index')}}" class="nav-link">
               <i class="nav-icon far fa-calendar-alt"></i>
               <p>
                 List Daftar Obat
@@ -86,7 +87,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{route("listObatBatuk160419144")}}" class="nav-link">
+            <a href="{{route('listObatBatuk160419144')}}" class="nav-link">
               <i class="nav-icon far fa-image"></i>
               <p>
                 Daftar Obat Batuk
@@ -94,7 +95,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{route("stokObatTerbanyak160419144")}}" class="nav-link">
+            <a href="{{route('stokObatTerbanyak160419144')}}" class="nav-link">
               <i class="nav-icon fas fa-columns"></i>
               <p>
                 Stok Obat Terbanyak
@@ -103,13 +104,23 @@
           </li>
           <li class="nav-header">TRANSAKSI</li>
           <li class="nav-item">
-            <a href="{{route("listObat160419144")}}" class="nav-link">
+            <a href="{{route('transaksi.index')}}" class="nav-link">
               <i class="nav-icon far fa-calendar-alt"></i>
               <p>
                 List Daftar Transaksi
               </p>
             </a>
           </li>
+          <li class="nav-header">SUPPLIER</li>
+          <li class="nav-item">
+            <a href="{{route('supplier.index')}}" class="nav-link">
+              <i class="nav-icon far fa-calendar-alt"></i>
+              <p>
+               List Supplier
+              </p>
+            </a>
+          </li>
+
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

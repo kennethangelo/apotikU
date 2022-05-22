@@ -26,7 +26,6 @@
                                     <tr>
                                         <th>ID</th>
                                         <th>Nama Kategori</th>
-                                        <th>Total Harga</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -34,7 +33,6 @@
                                     <tr>
                                         <td>{{$d->id}}</td>
                                         <td>{{$d->nama}}</td>
-                                        <td>Rp{{number_format($d->harga)}}</td>
                                     </tr>
                                     @endforeach
                                 </tbody>

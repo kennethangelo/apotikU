@@ -12,7 +12,7 @@ class KategoriObatSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('kategoriobat160419144')->insert([
+        DB::table('kategoriobat')->insert([
             ["nama"=>"Batuk"],
             ["nama"=>"Mata"],
             ["nama"=>"Nyeri Otot"],

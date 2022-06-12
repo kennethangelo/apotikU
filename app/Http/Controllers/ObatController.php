@@ -203,4 +203,38 @@ class ObatController extends Controller
         }
      
     }
+
+    public function saveDataField(Request $request){
+        $id = $request->get('id');
+        $fname = $request->get('fname');
+        $value = $request->get('value');
+        
+        if($fname == "nama"){
+            $fname = "nama_obat";
+        }
+
+        $obat = Obat::find($id);
+        $obat->$fname = $value;
+        $obat->save();
+        
+        return response()->json(array(
+            'status'=>'oke',
+            'msg'=>'Obat data updated!'
+        ),200);
+      
+     }
+
+     public function changeImage(Request $request){
+        $id = $request->get('id');
+        $file = $request->file('image');
+        $imgFolder = 'img/obat';
+        $imgFile = time().'_'.$file->getClientOriginalName();
+        $file->move($imgFolder, $imgFile);
+        
+        $obat = Obat::find($id);
+        $obat->gambar = $imgFile;
+        $obat->save();
+
+        return redirect()->route('obat.index')->with('status', 'Obat image is changed!');
+    }
 }

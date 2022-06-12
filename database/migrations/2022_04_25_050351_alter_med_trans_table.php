@@ -27,7 +27,7 @@ class AlterMedTransTable extends Migration
     public function down()
     {
         Schema::table('medicine_transaction', function (Blueprint $table) {
-            $table->dropForeign(['medicine_id', 'transactions_id']);
+            $table->dropColumn(['medicine_id', 'transactions_id']);
         });
     }
 }

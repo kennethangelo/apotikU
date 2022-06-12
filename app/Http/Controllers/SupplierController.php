@@ -38,6 +38,13 @@ class SupplierController extends Controller
     public function store(Request $request)
     {
         $data = new Supplier();
+
+        $file = $request->file('logo');
+        $imgFolder = 'images';
+        $imgFile = time().'_'.$file.getClientOriginalName();
+        $file->move($imgFolder, $imgFile);
+        $data->logo = $imgFile;
+
         $data->nama = $request->get('nama');
         $data->alamat = $request->get('alamat');
         $data->save();
@@ -91,6 +98,7 @@ class SupplierController extends Controller
      */
     public function destroy(Supplier $supplier)
     {
+        $this->authorize('delete-permission', $supplier);
         //Handle try and catch because the supplier is related with some data in Medicine table.
         try{
             $supplier->delete();
@@ -149,5 +157,35 @@ class SupplierController extends Controller
             ),200);
         }
      
+    }
+
+    public function saveDataField(Request $request){
+       $id = $request->get('id');
+       $fname = $request->get('fname');
+       $value = $request->get('value');
+
+       $supplier = Supplier::find($id);
+       $supplier->$fname = $value;
+       $supplier->save();
+       
+       return response()->json(array(
+           'status'=>'oke',
+           'msg'=>'Supplier data updated!'
+       ),200);
+     
+    }
+
+    public function changeLogo(Request $request){
+        $id = $request->get('id');
+        $file = $request->file('logo');
+        $imgFolder = 'img/supplier';
+        $imgFile = time().'_'.$file->getClientOriginalName();
+        $file->move($imgFolder, $imgFile);
+        
+        $supplier = Supplier::find($id);
+        $supplier->logo = $imgFile;
+        $supplier->save();
+
+        return redirect()->route('supplier.index')->with('status', 'Supplier logo is changed!');
     }
 }

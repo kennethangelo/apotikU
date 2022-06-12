@@ -109,6 +109,7 @@
                                     <th>Harga</th>
                                     <th>Nama Kategori Obat</th>
                                     <th>Nama Supplier Obat</th>
+                                    <th>Gambar</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -116,11 +117,41 @@
                                 @foreach($data as $d)
                                 <tr id="tr_{{$d->id}}">
                                     <td>{{$d->id}}</td>
-                                    <td id="td_nama_{{$d->id}}">{{$d->nama_obat}}</td>
-                                    <td id="td_stok_{{$d->id}}">{{$d->stok}}</td>
-                                    <td id="td_harga_{{$d->id}}">Rp{{number_format($d->harga)}}</td>
+                                    <td class="editable" id="td_nama_{{$d->id}}">{{$d->nama_obat}}</td>
+                                    <td class="editable" id="td_stok_{{$d->id}}">{{$d->stok}}</td>
+                                    <td class="editable" id="td_harga_{{$d->id}}">Rp{{number_format($d->harga)}}</td>
                                     <td id="td_kategori_{{$d->id}}">{{$d->kategori->nama}}</td>
                                     <td id="td_supplier_{{$d->id}}">{{$d->supplier->nama}}</td>
+                                    <td id="td_gambar_{{$d->id}}"><img height='100px' src="{{ asset('img/obat/'.$d->gambar)}}">
+                                        <div class="modal fade" id="modalChange_{{$d->id}}" tabindex="-1" role="basic" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                                                        <h4 class="modal-title">Change Image</h4>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <form role="form" enctype="multipart/form-data" action="{{route('obat.changeImage')}}" method="POST">
+                                                            @csrf
+                                                            <div class="form-body">
+                                                                <div class="form-group">
+                                                                    <label for="name">Image</label>
+                                                                    <input type="file" name="image" id="image" class="form-control" />
+                                                                    <input type="hidden" name="id" id="id" value="{{$d->id}}" />
+                                                                </div>
+                                                            </div>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="submit" class="btn btn-info">Submit</button>
+                                                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                                                    </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div><br>
+
+                                        <a href="#modalChange_{{$d->id}}" data-toggle="modal" class="btn btn-warning">Change Image</a>
+                                    </td>
                                     <td><a type="button" class="btn btn-info" href="{{route('obat.edit', $d->id)}}">Edit</a>
                                         <a type="button" href="#modalEdit" data-toggle="modal" class="btn btn-warning" onclick="getEditForm({{$d->id}})">Edit A</a>
                                         <a type="button" href="#modalEdit" data-toggle="modal" class="btn btn-warning" onclick="getEditForm2({{$d->id}})">Edit B</a>
@@ -229,5 +260,27 @@
             }
         });
     }
+
+    $(".editable").editable({
+        closeOnEnter: true,
+        callback: function(data) {
+            var s_id = data.$el[0].id
+            var fname = s_id.split('_')[1]
+            var id = s_id.split('_')[2]
+            $.ajax({
+                type: 'POST',
+                url: '{{route("obat.saveDataField")}}',
+                data: {
+                    '_token': '<?php echo csrf_token() ?>',
+                    'id': id,
+                    'fname': fname,
+                    'value': data.content
+                },
+                success: function(data) {
+                    alert(data.msg)
+                }
+            });
+        }
+    });
 </script>
 @endsection

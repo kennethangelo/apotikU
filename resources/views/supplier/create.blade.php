@@ -16,7 +16,7 @@
 <!-- Main content -->
 <section class="content">
   <div class="container-fluid">
-    <form method="POST" action="{{route('supplier.store')}}">
+    <form method="POST" action="{{route('supplier.store')}}" enctype="multipart/form-data" role="form">
       @csrf
       <div class="form-group">
         <label for="exampleInputEmail1">Nama</label>
@@ -25,6 +25,10 @@
       <div class="form-group">
         <label for="exampleInputPassword1">Alamat</label>
         <textarea class="form-control" name="alamat" cols="10" rows="3"></textarea>
+      </div>
+      <div class="form-group">
+        <label for="logo">Logo</label>
+        <input type="file" class="form-control" id="logo" name="logo">
       </div>
       <button type="submit" class="btn btn-primary">Submit</button>
     </form>
